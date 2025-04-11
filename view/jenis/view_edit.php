@@ -8,7 +8,7 @@
 </head>
 <body>
     <div class="container">
-        <h1>Tambah Data Barang Raffa</h1>
+        <h1>Tambah Data jenis Raffa</h1>
 
         <?php
         include '../../config/koneksi.php';

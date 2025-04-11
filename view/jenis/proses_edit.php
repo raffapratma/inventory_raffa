@@ -1,15 +1,13 @@
 <?php
 $id = $_GET['id'];
-
 $nama_jenis = $_POST['nama_jenis'];
 
 include '../../config/koneksi.php';
 
-$query = mysqli_query($conn, "UPDATE jenis SET
-    nama_jenis='$nama_jenis',
-WHERE id_barang='$id'");
+$stmt = $conn->prepare("UPDATE jenis SET nama_jenis=? WHERE id_jenis=?");
+$stmt->bind_param("si", $nama_jenis, $id);
+$query = $stmt->execute();
 
-// Javascript
 if ($query) {
     echo "<script>alert('Data berhasil diedit');</script>";
     echo "<script>window.location.href='index.php';</script>";
@@ -17,3 +15,4 @@ if ($query) {
     echo "<script>alert('Data gagal diedit');</script>";
     echo "<script>window.location.href='view_tambah.php';</script>";
 }
+?>
